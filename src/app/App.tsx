@@ -1,13 +1,7 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
-
-function LoginPage() {
-    return <div>Login Page</div>;
-}
-
-function HomePage() {
-    return <div>Home Page</div>;
-}
+import HomePage from "./HomePage";
+import LoginPage from "./LoginPage";
 
 class App extends React.Component {
     render() {
