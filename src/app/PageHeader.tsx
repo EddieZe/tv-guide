@@ -1,21 +1,25 @@
 import React from "react";
-import {createStyles, Theme, Typography, withStyles} from "@material-ui/core";
+import {makeStyles, Theme, Typography} from "@material-ui/core";
 
-const PageHeader = ({classes}) => (
-    <div className={classes.root}>
-        <Typography className={classes.primaryTitle} variant="h5">
-            Tv Guide
-        </Typography>
-    </div>
+const PageHeader = () => {
+    const classes = useStyles(this.props);
+    return (
+        <div className={classes.root}>
+            <Typography className={classes.primaryTitle} variant="h5">
+                Tv Guide
+            </Typography>
+        </div>
+    )
+};
+
+const useStyles = makeStyles((theme: Theme) => ({
+        root: {
+            padding: theme.spacing(2)
+        },
+        primaryTitle: {
+            fontWeight: 700
+        }
+    })
 );
 
-const styles = (theme: Theme) => createStyles({
-    root: {
-        padding: theme.spacing(2)
-    },
-    primaryTitle: {
-        fontWeight: 700
-    }
-});
-
-export default withStyles(styles)(PageHeader);
+export default PageHeader;

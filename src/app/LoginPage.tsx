@@ -2,22 +2,18 @@ import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
 import {
     Button,
-    createStyles,
     FormControl,
     Grid,
     Input,
-    InputLabel,
-    Theme,
-    Typography,
-    withStyles,
-    WithStyles
+    InputLabel, makeStyles, Theme,
+    Typography
 } from "@material-ui/core";
 
 interface LoginPageProps {
 }
 
-const LoginPage = ({classes}: LoginPageProps & WithStyles) => {
-
+const LoginPage = ({}: LoginPageProps) => {
+    const classes = useStyles(this.props);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const history = useHistory();
@@ -88,23 +84,24 @@ const LoginPage = ({classes}: LoginPageProps & WithStyles) => {
     )
 };
 
-const styles = (theme: Theme) => createStyles({
-    root: {
-        display: "flex",
-        justifyContent: "center",
-        textAlign: "center",
-        width: "100%",
-        height: "100%"
-    },
-    form: {
-        maxWidth: 350,
-        display: "flex",
-        alignSelf: 'center'
-    },
-    button: {
-        textTransform: theme.typography.button.textTransform
-    }
-});
+const useStyles = makeStyles((theme: Theme) => ({
+        root: {
+            display: "flex",
+            justifyContent: "center",
+            textAlign: "center",
+            width: "100%",
+            height: "100%"
+        },
+        form: {
+            maxWidth: 350,
+            display: "flex",
+            alignSelf: 'center'
+        },
+        button: {
+            textTransform: theme.typography.button.textTransform
+        }
+    })
+);
 
-export default withStyles(styles)(LoginPage);
+export default LoginPage
 

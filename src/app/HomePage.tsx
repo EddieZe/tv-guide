@@ -1,33 +1,36 @@
 import React from "react";
-import {createStyles, Grid, Theme, withStyles, WithStyles} from "@material-ui/core";
+import {Grid, makeStyles, Theme} from "@material-ui/core";
 import PageHeader from "./PageHeader";
+import ContentListContainer from "./ContentListContainer";
 
 interface HomePageProps {
 }
 
-const HomePage = ({classes}: HomePageProps & WithStyles) => {
+const HomePage = ({}: HomePageProps) => {
+    const classes = useStyles(this.props);
     return (
         <Grid container direction="column" wrap="nowrap" className={classes.container} component={'div'}>
             <Grid item className={classes.headerContainer} component={'div'}>
                 <PageHeader/>
             </Grid>
-            <Grid item className={classes.contentContainer} component={'div'}>
-                <div className={classes.content}>Home Page</div>
+            <Grid item component={'div'}>
+                <div className={classes.content}><ContentListContainer/></div>
             </Grid>
         </Grid>
     );
 };
 
-const styles = (theme: Theme) => createStyles({
-    container: {
-        height: "100%"
-    },
-    headerContainer: {
-        marginBottom: 10
-    },
-    content: {
-        padding: theme.spacing(2)
-    }
-});
+const useStyles = makeStyles((theme: Theme) => ({
+        container: {
+            height: "100%"
+        },
+        headerContainer: {
+            marginBottom: 10
+        },
+        content: {
+            padding: theme.spacing(2)
+        }
+    })
+);
 
-export default withStyles(styles)(HomePage);
+export default HomePage;
