@@ -14,7 +14,6 @@ const ShowCard = ({show}: ShowCardProps) => {
     let history = useHistory();
 
     const handleShowMoreClick = (showId: number) => {
-        console.log(`Clicked on show more of show ${showId}`);
         history.push(`/show/${showId}`)
     };
 
