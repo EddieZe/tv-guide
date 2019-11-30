@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
 import HomePage from "./HomePage";
 import LoginPage from "./LoginPage";
+import ShowPage from "./ShowPage";
 
 class App extends React.Component {
     render() {
@@ -11,6 +12,7 @@ class App extends React.Component {
                     <Route exact path="/" render={() => <Redirect to="/home"/>}/>
                     <Route path="/login" component={LoginPage}/>
                     <PrivateRoute path="/home" component={HomePage}/>
+                    <PrivateRoute path="/show/:id" component={ShowPage}/>
                 </Switch>
             </Router>
         )

@@ -1,20 +1,8 @@
 import {Card, CardContent, CardMedia, Typography} from "@material-ui/core";
-import {makeStyles, useTheme} from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import React from "react";
-
-interface ShowDetails {
-    id: number;
-    url: string;
-    name: string;
-    language: string;
-    genres: string[];
-    runtime: number;
-    premiered: Date;
-    rating: number;
-    network: any;
-    image: any;
-    summary: string;
-}
+import moment = require("moment");
+import {ShowDetails} from "./ShowDetailsType";
 
 interface ShowCardProps {
     show: ShowDetails
@@ -22,6 +10,11 @@ interface ShowCardProps {
 
 const ShowCard = ({show}: ShowCardProps) => {
     const classes = useStyles(this.props);
+
+    const handleShowMoreClick = (showId: number) => {
+        console.log(`Clicked on show more of show ${showId}`);
+    };
+
     return (
         <>
             {show &&
@@ -31,9 +24,14 @@ const ShowCard = ({show}: ShowCardProps) => {
                         {show.name}
                     </Typography>
                     <Typography variant="subtitle1" color="textSecondary">
-                        {show.premiered}
+                        {moment(show.premiered).format('LL')}
                     </Typography>
-                    {show.summary && <p className={classes.showSummary} dangerouslySetInnerHTML={{__html: show.summary.replace(/<?p>/gi, '')}}/>}
+                    {show.summary && <p className={classes.showSummary}
+                                        dangerouslySetInnerHTML={{__html: show.summary.replace(/<?p>/gi, '')}}/>}
+                    <div className={classes.showMore} onClick={() => {
+                        handleShowMoreClick(show.id)
+                    }}>show more...
+                    </div>
                 </CardContent>
                 <CardMedia
                     className={classes.showImage}
@@ -59,14 +57,22 @@ const useStyles = makeStyles(() => ({
         },
         cardContent: {
             minWidth: 220,
-            padding: 10
+            padding: 10,
+            position: 'relative'
         },
         showSummary: {
+            margin: 5,
             overflow: "hidden",
             textOverflow: "ellipsis",
             display: "-webkit-inline-box",
             '-webkitBoxOrient': 'vertical',
             '-webkit-line-clamp': 3
+        },
+        showMore: {
+            textAlign: 'right',
+            position: 'absolute',
+            bottom: 10,
+            right: 10
         }
     })
 );
