@@ -35,7 +35,8 @@ class ContentListContainer extends Component<WithStyles> {
 const styles = () => createStyles({
     showsListContainer: {
         display: 'flex',
-        flexWrap: 'wrap'
+        flexFlow: 'row wrap',
+        justifyContent: 'flex-start'
     }
 });
 export default withStyles(styles)(ContentListContainer)

@@ -49,16 +49,17 @@ const ShowCard = ({show}: ShowCardProps) => {
 const useStyles = makeStyles(() => ({
         root: {
             display: 'flex',
-            maxWidth: 400,
-            maxHeight: 200,
+            width: 385,
+            height: 170,
             margin: '10px 20px'
         },
         showImage: {
-            minWidth: 150,
+            minWidth: 120,
             display: 'flex'
         },
         cardContent: {
-            minWidth: 220
+            minWidth: 220,
+            padding: 10
         },
         showSummary: {
             overflow: "hidden",
