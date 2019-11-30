@@ -1,6 +1,7 @@
 const TVMAZE_API_URL = 'http://api.tvmaze.com';
 const TVMAZE_APIS = {
-    SHOW_SEARCH: '/search/shows'
+    SHOW_SEARCH: '/search/shows',
+    SHOW_DETAILS: '/shows'
 };
 
 const handleResponse = async (response) => {
@@ -19,3 +20,13 @@ export const getShows = async () => {
             return handleResponse(res);
         })
 };
+
+export const getShowDetails = async (id: number) => {
+    const URL = `${TVMAZE_API_URL}${TVMAZE_APIS.SHOW_DETAILS}/${id}`;
+    return fetch(URL, {method: 'GET'})
+        .then(res => {
+            return handleResponse(res);
+        })
+};
+
+//http://api.tvmaze.com/shows/1
