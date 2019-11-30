@@ -1,7 +1,7 @@
 import React from "react";
 import {Grid, makeStyles, Theme} from "@material-ui/core";
 import PageHeader from "./PageHeader";
-import ContentListContainer from "./ContentListContainer";
+import ContentListContainer from "../show-list/ContentListContainer";
 
 interface HomePageProps {
 }
@@ -11,7 +11,7 @@ const HomePage = ({}: HomePageProps) => {
     return (
         <Grid container direction="column" wrap="nowrap" className={classes.container} component={'div'}>
             <Grid item className={classes.headerContainer} component={'div'}>
-                <PageHeader/>
+                <PageHeader isSearchVisible={true}/>
             </Grid>
             <Grid item component={'div'}>
                 <div className={classes.content}><ContentListContainer/></div>

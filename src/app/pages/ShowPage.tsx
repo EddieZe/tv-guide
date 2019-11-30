@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
-import {getShowDetails} from "./services/tvmaze-services";
+import {getShowDetails} from "../services/tvmaze-services";
 import {makeStyles, Theme} from "@material-ui/core";
 
 interface ShowPageProps {
@@ -18,7 +18,7 @@ const ShowPage = ({}: ShowPageProps) => {
         });
     }, [id]);
 
-    return (<div>{JSON.stringify(showDet)}</div>)
+    return (<div>{showDet && JSON.stringify(showDet)}}</div>)
 };
 
 const useStyles = makeStyles((theme: Theme) => ({}));

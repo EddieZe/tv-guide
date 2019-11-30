@@ -1,8 +1,9 @@
+import React from "react";
+import {useHistory} from "react-router-dom";
 import {Card, CardContent, CardMedia, Typography} from "@material-ui/core";
 import {makeStyles} from '@material-ui/core/styles';
-import React from "react";
 import moment = require("moment");
-import {ShowDetails} from "./ShowDetailsType";
+import {ShowDetails} from "../shared/ShowDetailsType";
 
 interface ShowCardProps {
     show: ShowDetails
@@ -10,9 +11,11 @@ interface ShowCardProps {
 
 const ShowCard = ({show}: ShowCardProps) => {
     const classes = useStyles(this.props);
+    let history = useHistory();
 
     const handleShowMoreClick = (showId: number) => {
         console.log(`Clicked on show more of show ${showId}`);
+        history.push(`/show/${showId}`)
     };
 
     return (
@@ -20,7 +23,7 @@ const ShowCard = ({show}: ShowCardProps) => {
             {show &&
             <Card className={classes.root}>
                 <CardContent className={classes.cardContent}>
-                    <Typography component="h5" variant="h5">
+                    <Typography component="h6" variant="h6" className={classes.showName}>
                         {show.name}
                     </Typography>
                     <Typography variant="subtitle1" color="textSecondary">
@@ -33,11 +36,12 @@ const ShowCard = ({show}: ShowCardProps) => {
                     }}>show more...
                     </div>
                 </CardContent>
-                <CardMedia
+                {show.image && <CardMedia
                     className={classes.showImage}
                     image={show.image.medium}
                     title={show.name}
                     component={'div'}/>
+                }
             </Card>
             }
         </>
@@ -51,17 +55,22 @@ const useStyles = makeStyles(() => ({
             height: 170,
             margin: '10px 20px'
         },
+        showName: {
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis'
+        },
         showImage: {
             minWidth: 120,
             display: 'flex'
         },
         cardContent: {
-            minWidth: 220,
+            minWidth: 245,
             padding: 10,
             position: 'relative'
         },
         showSummary: {
-            margin: 5,
+            margin: '5px 0',
             overflow: "hidden",
             textOverflow: "ellipsis",
             display: "-webkit-inline-box",
@@ -71,6 +80,7 @@ const useStyles = makeStyles(() => ({
         showMore: {
             textAlign: 'right',
             position: 'absolute',
+            cursor: 'pointer',
             bottom: 10,
             right: 10
         }
