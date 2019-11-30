@@ -13,8 +13,8 @@ const handleResponse = async (response) => {
     }
 };
 
-export const getShows = async () => {
-    const URL = `${TVMAZE_API_URL}${TVMAZE_APIS.SHOW_SEARCH}?q=game`;
+export const getShows = async (queryStr = '') => {
+    const URL = `${TVMAZE_API_URL}${TVMAZE_APIS.SHOW_SEARCH}?q=${queryStr}`;
     return fetch(URL, {method: 'GET'})
         .then(res => {
             return handleResponse(res);
