@@ -4,10 +4,10 @@ import SearchTextInput from "../show-details/SearchTextInput";
 import {appContext} from "../hooks/AppContext";
 
 interface PageHeaderProps {
-    isSearchVisible: boolean
+    isSearchVisible?: boolean
 }
 
-const PageHeader = ({isSearchVisible}: PageHeaderProps) => {
+const PageHeader = ({isSearchVisible = false}: PageHeaderProps) => {
     const context = useContext(appContext);
     const classes = useStyles(this.props);
 

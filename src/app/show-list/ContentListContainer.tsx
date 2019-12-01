@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme: Theme) => ({
         showsListContainer: {
             display: 'flex',
             flexFlow: 'row wrap',
-            justifyContent: 'flex-start'
+            justifyContent: 'space-between'
         }
     })
 );

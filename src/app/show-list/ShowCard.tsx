@@ -50,9 +50,9 @@ const ShowCard = ({show}: ShowCardProps) => {
 const useStyles = makeStyles(() => ({
         root: {
             display: 'flex',
-            width: 385,
+            width: 330,
             height: 170,
-            margin: '10px 20px'
+            marginBottom: 20
         },
         showName: {
             whiteSpace: 'nowrap',
@@ -64,7 +64,7 @@ const useStyles = makeStyles(() => ({
             display: 'flex'
         },
         cardContent: {
-            minWidth: 245,
+            minWidth: 170,
             padding: 10,
             position: 'relative'
         },

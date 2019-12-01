@@ -22,13 +22,17 @@ const HomePage = ({}: HomePageProps) => {
 
 const useStyles = makeStyles((theme: Theme) => ({
         container: {
-            height: "100%"
+            height: "100%",
+            width: 1080,
+            margin: 'auto'
         },
         headerContainer: {
-            marginBottom: 10
+            marginBottom: 10,
+            justifyContent: 'space-between'
         },
         content: {
-            padding: theme.spacing(2)
+            padding: theme.spacing(2),
+            justifyContent: 'space-between'
         }
     })
 );
