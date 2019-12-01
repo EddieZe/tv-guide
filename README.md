@@ -3,7 +3,8 @@
 Tv guide is a shows guide based on TVMaze API
 
 ## Installation
-
+* run npm install
+* run npm start
 
 ## Usage
 
